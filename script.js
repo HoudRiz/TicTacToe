@@ -1,4 +1,4 @@
-(function gameBoard() {
+let gameBoard = (function () {
   let board = [];
 
   (function divAdd(array) {
