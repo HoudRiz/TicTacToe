@@ -18,5 +18,4 @@ let personFactory = function (name, indicator) {
 };
 
 let player1 = personFactory("player1", "X");
-console.log(player1.name);
-console.log(gameBoard.board);
+
