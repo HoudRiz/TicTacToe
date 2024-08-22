@@ -19,6 +19,17 @@ const tempRun = function () {
   console.log(gameBoard);
 };
 
+function findIndicesWithOne() {
+  const indices = [];
+
+  for (let i = 0; i < gameBoard.length; i += 1) {
+    if (gameBoard[i] === 1) {
+      indices.push(i);
+    }
+  }
+
+  return indices;
+}
 function checkCombination(numbers) {
   const winningCombinations = [
     [1, 2, 3],
@@ -31,12 +42,14 @@ function checkCombination(numbers) {
 
   for (const combination of winningCombinations) {
     if (combination.every((num) => numbers.includes(num))) {
-      return true;
+      console.log('The combination matches one of the winning patterns!');
     }
   }
-  return false;
+  console.log('The combination does not match any winning pattern.');
 }
 
 for (let i = 0; i < 9; i += 1) {
   tempRun();
+  const playerOneInput = findIndicesWithOne();
+  checkCombination(playerOneInput);
 }
