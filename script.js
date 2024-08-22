@@ -16,19 +16,20 @@
 
 const gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-const inputFunction = function () {
-  const location = prompt('Please enter your location of thing to run');
+const inputFunction = function (player) {
+  // eslint-disable-next-line no-template-curly-in-string
+  const location = prompt('Please enter location for ${player}');
   return location;
 };
 
 const locOne = function () {
-  const location = parseInt(inputFunction());
+  const location = parseInt(inputFunction('Player One'));
   gameBoard[location - 1] = 1;
   console.log(gameBoard);
 };
 
 const locTwo = function () {
-  const location = parseInt(inputFunction());
+  const location = parseInt(inputFunction('Player Two'));
   gameBoard[location - 1] = 2;
   console.log(gameBoard);
 };
@@ -86,5 +87,6 @@ for (let i = 0; i < 9; i += 1) {
   locTwo();
   const playerOneInput = findIndicesWithOne();
   const playerTwoInput = findIndicesWithTwo();
-  checkCombination(playerOneInput, playerTwoInput);
+  const winner = checkCombination(playerOneInput, playerTwoInput);
+  console.log('the winner is $(winner)');
 }
