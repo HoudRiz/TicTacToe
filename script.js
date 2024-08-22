@@ -83,7 +83,6 @@ function checkCombination(playerOne, playerTwo) {
 
 for (let i = 0; i < 9; i += 1) {
   locOne();
-  locTwo();
   const playerOneInput = findIndicesWithOne();
   const playerTwoInput = findIndicesWithTwo();
   const winner = checkCombination(playerOneInput, playerTwoInput);
@@ -92,5 +91,6 @@ for (let i = 0; i < 9; i += 1) {
     console.log(`the winner is ${winner}`);
     break;
   }
+  locTwo();
   // game does not end instantly after win
 }
