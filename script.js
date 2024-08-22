@@ -16,14 +16,20 @@
 
 const gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-const inputFunction = function () {
-  const location = prompt('Please enter your location of thing to run');
+const inputFunction = function (player) {
+  const location = prompt(`Please enter location for ${player}`);
   return location;
 };
 
-const tempRun = function () {
-  const location = parseInt(inputFunction());
+const locOne = function () {
+  const location = parseInt(inputFunction('Player One'));
   gameBoard[location - 1] = 1;
+  console.log(gameBoard);
+};
+
+const locTwo = function () {
+  const location = parseInt(inputFunction('Player Two'));
+  gameBoard[location - 1] = 2;
   console.log(gameBoard);
 };
 
@@ -65,7 +71,7 @@ function checkCombination(playerOne, playerTwo) {
 
   for (const combination of winningCombinations) {
     if (combination.every((num) => playerOne.includes(num))) {
-      const winner = playerOne;
+      const winner = 'playerOne';
       return winner;
     }
     if (combination.every((num) => playerTwo.includes(num))) {
@@ -76,8 +82,15 @@ function checkCombination(playerOne, playerTwo) {
 }
 
 for (let i = 0; i < 9; i += 1) {
-  tempRun();
+  locOne();
+  locTwo();
   const playerOneInput = findIndicesWithOne();
   const playerTwoInput = findIndicesWithTwo();
-  checkCombination(playerOneInput, playerTwoInput);
+  const winner = checkCombination(playerOneInput, playerTwoInput);
+  // eslint-disable-next-line no-template-curly-in-string
+  if (winner) {
+    console.log(`the winner is ${winner}`);
+    break;
+  }
+  // game does not end instantly after win
 }
