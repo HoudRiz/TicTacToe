@@ -32,8 +32,20 @@ function findIndicesWithOne() {
   return indices;
 }
 
+function findIndicesWithTwo() {
+  const indices = [];
+
+  for (let i = 0; i < gameBoard.length; i += 1) {
+    if (gameBoard[i] === 2) {
+      indices.push(i + 1);
+    }
+  }
+  console.log(indices);
+  return indices;
+}
+
 // function checks for the winning combination in the numbers inputted
-function checkCombination(numbers) {
+function checkCombination(playerOne, playerTwo) {
   const winningCombinations = [
     [1, 2, 3],
     [4, 5, 6],
@@ -45,19 +57,20 @@ function checkCombination(numbers) {
   ];
 
   for (const combination of winningCombinations) {
-    if (combination.every((num) => numbers.includes(num))) {
-      return true;
+    if (combination.every((num) => playerOne.includes(num))) {
+      const winner = playerOne;
+      return winner;
+    }
+    if (combination.every((num) => playerTwo.includes(num))) {
+      const winner = 'player Two';
+      return winner;
     }
   }
-  return false;
 }
 
 for (let i = 0; i < 9; i += 1) {
   tempRun();
   const playerOneInput = findIndicesWithOne();
-
-  if (checkCombination(playerOneInput)) {
-    console.log('winning');
-    break;
-  }
+  const playerTwoInput = findIndicesWithTwo();
+  checkCombination(playerOneInput, playerTwoInput);
 }
