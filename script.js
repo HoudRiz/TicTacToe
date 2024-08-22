@@ -58,7 +58,7 @@ function findIndicesWithTwo() {
 }
 
 // function checks for the winning combination in the numbers inputted
-function checkCombination(playerOne, playerTwo) {
+function checkCombination(player) {
   const winningCombinations = [
     [1, 2, 3],
     [4, 5, 6],
@@ -70,27 +70,26 @@ function checkCombination(playerOne, playerTwo) {
   ];
 
   for (const combination of winningCombinations) {
-    if (combination.every((num) => playerOne.includes(num))) {
-      const winner = 'playerOne';
-      return winner;
-    }
-    if (combination.every((num) => playerTwo.includes(num))) {
-      const winner = 'player Two';
-      return winner;
+    if (combination.every((num) => player.includes(num))) {
+      return true;
     }
   }
+  return false;
 }
 
 for (let i = 0; i < 9; i += 1) {
   locOne();
-  locTwo();
   const playerOneInput = findIndicesWithOne();
-  const playerTwoInput = findIndicesWithTwo();
-  const winner = checkCombination(playerOneInput, playerTwoInput);
-  // eslint-disable-next-line no-template-curly-in-string
-  if (winner) {
-    console.log(`the winner is ${winner}`);
+  if (checkCombination(playerOneInput)) {
+    console.log('play one wins');
     break;
   }
-  // game does not end instantly after win
+  locTwo();
+  const playerTwoInput = findIndicesWithTwo();
+  if (checkCombination(playerTwoInput)) {
+    console.log('player two wins');
+    break;
+  }
+
+  // game does not finish after player 2
 }
