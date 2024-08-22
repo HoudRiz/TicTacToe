@@ -21,9 +21,15 @@ const inputFunction = function () {
   return location;
 };
 
-const tempRun = function () {
+const locOne = function () {
   const location = parseInt(inputFunction());
   gameBoard[location - 1] = 1;
+  console.log(gameBoard);
+};
+
+const locTwo = function () {
+  const location = parseInt(inputFunction());
+  gameBoard[location - 1] = 2;
   console.log(gameBoard);
 };
 
@@ -76,7 +82,8 @@ function checkCombination(playerOne, playerTwo) {
 }
 
 for (let i = 0; i < 9; i += 1) {
-  tempRun();
+  locOne();
+  locTwo();
   const playerOneInput = findIndicesWithOne();
   const playerTwoInput = findIndicesWithTwo();
   checkCombination(playerOneInput, playerTwoInput);
