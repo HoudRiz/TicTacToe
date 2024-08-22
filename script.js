@@ -1,8 +1,16 @@
-// const personFactory = function (name, indicator, displayVar) {
+// const personFactory = function (
+//   name,
+//   indicator,
+//   displayVar,
+//   locationArray,
+//   input,
+// ) {
 //   return {
 //     name,
 //     indicator,
 //     displayVar,
+//     locationArray,
+//     input,
 //   };
 // };
 
@@ -19,7 +27,6 @@ const tempRun = function () {
   console.log(gameBoard);
 };
 
-// this is a temporary function, it checks to see if the indexes in which 1 is in the algorithm
 function findIndicesWithOne() {
   const indices = [];
 
