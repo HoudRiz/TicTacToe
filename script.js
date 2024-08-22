@@ -19,17 +19,20 @@ const tempRun = function () {
   console.log(gameBoard);
 };
 
+// this is a temporary function, it checks to see if the indexes in which 1 is in the algorithm
 function findIndicesWithOne() {
   const indices = [];
 
   for (let i = 0; i < gameBoard.length; i += 1) {
     if (gameBoard[i] === 1) {
-      indices.push(i);
+      indices.push(i + 1);
     }
   }
-
+  console.log(indices);
   return indices;
 }
+
+// function checks for the winning combination in the numbers inputted
 function checkCombination(numbers) {
   const winningCombinations = [
     [1, 2, 3],
@@ -42,14 +45,18 @@ function checkCombination(numbers) {
 
   for (const combination of winningCombinations) {
     if (combination.every((num) => numbers.includes(num))) {
-      console.log('The combination matches one of the winning patterns!');
+      return true;
     }
   }
-  console.log('The combination does not match any winning pattern.');
+  return false;
 }
 
 for (let i = 0; i < 9; i += 1) {
   tempRun();
   const playerOneInput = findIndicesWithOne();
-  checkCombination(playerOneInput);
+
+  if (checkCombination(playerOneInput)) {
+    console.log('winning');
+    break;
+  }
 }
