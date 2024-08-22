@@ -1,10 +1,10 @@
 const gameBoard = new Array(9).fill(0);
 
 const inputFunction = function (player) {
-  const location = parseInt(
-    prompt(`Please enter location for ${player.name}`),
-    10,
-  );
+  // const location = parseInt(
+  //   prompt(`Please enter location for ${player.name}`),
+  //   10,
+  // );
   if (!isNaN(location) && location > 0 && location <= gameBoard.length) {
     gameBoard[location - 1] = player.indicator;
   } else {
