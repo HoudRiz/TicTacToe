@@ -88,5 +88,6 @@ for (let i = 0; i < 9; i += 1) {
   const playerOneInput = findIndicesWithOne();
   const playerTwoInput = findIndicesWithTwo();
   const winner = checkCombination(playerOneInput, playerTwoInput);
-  console.log('the winner is $(winner)');
+  // eslint-disable-next-line no-template-curly-in-string
+  console.log('the winner is ${winner}');
 }
