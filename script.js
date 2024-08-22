@@ -92,5 +92,5 @@ for (let i = 0; i < 9; i += 1) {
     console.log(`the winner is ${winner}`);
     break;
   }
-  // there is an issue where this keeps looping instead of breaking at the end of win
+  // game does not end instantly after win
 }
