@@ -1,8 +1,7 @@
-const personFactory = function (name, indicator) {
+const personFactory = function (name, indicator, displayVar) {
   return {
     name,
     indicator,
+    displayVar,
   };
 };
-
-const player1 = personFactory('player1', 'X');
