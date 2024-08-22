@@ -17,8 +17,7 @@
 const gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 const inputFunction = function (player) {
-  // eslint-disable-next-line no-template-curly-in-string
-  const location = prompt('Please enter location for ${player}');
+  const location = prompt(`Please enter location for ${player}`);
   return location;
 };
 
@@ -72,7 +71,7 @@ function checkCombination(playerOne, playerTwo) {
 
   for (const combination of winningCombinations) {
     if (combination.every((num) => playerOne.includes(num))) {
-      const winner = playerOne;
+      const winner = 'playerOne';
       return winner;
     }
     if (combination.every((num) => playerTwo.includes(num))) {
@@ -89,5 +88,9 @@ for (let i = 0; i < 9; i += 1) {
   const playerTwoInput = findIndicesWithTwo();
   const winner = checkCombination(playerOneInput, playerTwoInput);
   // eslint-disable-next-line no-template-curly-in-string
-  console.log('the winner is ${winner}');
+  if (winner) {
+    console.log(`the winner is ${winner}`);
+    break;
+  }
+  // there is an issue where this keeps looping instead of breaking at the end of win
 }
