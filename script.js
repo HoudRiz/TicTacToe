@@ -92,4 +92,5 @@ for (let i = 0; i < 9; i += 1) {
     break;
   }
   locTwo();
+  // game does not finish after player 2
 }
