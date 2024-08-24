@@ -8,12 +8,7 @@ function inputFlow(player, buttonId) {
   }
 }
 const inputFunction = function (player, location) {
-  if (!isNaN(location) && location > 0 && location <= gameBoard.length) {
-    gameBoard[location - 1] = player.indicator;
-  } else {
-    console.log('Invalid location');
-  }
-
+  gameBoard[location - 1] = player.indicator;
   console.log(gameBoard);
   return gameBoard;
 };
