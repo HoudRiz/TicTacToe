@@ -8,6 +8,12 @@ body {
     background-color: #f0f0f0;
 }
 
+.message-container {
+    text-align: center;
+    margin-bottom: 20px;
+    /* Space between messages and grid */
+}
+
 /* Grid container styling */
 .grid-container {
     display: grid;
