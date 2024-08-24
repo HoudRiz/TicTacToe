@@ -62,31 +62,6 @@ const personFactory = function (
 const playerOne = personFactory('player1', 1, 'x', []);
 const playerTwo = personFactory('player2', 2, 'x', []);
 
-// for (let i = 0; i < 9; i += 1) {
-//   // Player One's Turn
-//   inputFunction(playerOne); // Get input from player one
-//   const playerOneInput = findIndexes(playerOne, gameBoard); // Update and check player one's positions
-//   if (checkCombination(playerOneInput)) {
-//     // Check if player one has a winning combination
-//     console.log('Player One wins!');
-//     break;
-//   }
-
-//   // Check if the board is full before proceeding to player two's turn
-//   if (i === 8) {
-//     console.log("It's a draw!");
-//     break;
-//   }
-
-//   // Player Two's Turn
-//   inputFunction(playerTwo); // Get input from player two
-//   const playerTwoInput = findIndexes(playerTwo, gameBoard); // Update and check player two's positions
-//   if (checkCombination(playerTwoInput)) {
-//     // Check if player two has a winning combination
-//     console.log('Player Two wins!');
-//     break;
-//   }
-// }
 // use buttons for fow control
 const buttons = document.querySelectorAll('.grid-container button');
 
@@ -102,14 +77,12 @@ buttons.forEach((button) => {
       const playerOneInput = findIndexes(playerOne, gameBoard); // Update and check player one's positions
       if (checkCombination(playerOneInput)) {
         console.log('Player One wins!');
-        // Additional logic to handle win (e.g., stop game, disable buttons)
       }
     } else if (currentPlayer === playerTwo) {
       inputFunction(playerTwo, buttonId);
       const playerTwoInput = findIndexes(playerTwo, gameBoard); // Update and check player two's positions
       if (checkCombination(playerTwoInput)) {
         console.log('Player Two wins!');
-        // Additional logic to handle win (e.g., stop game, disable buttons)
       }
     }
   });
