@@ -1,10 +1,13 @@
 const gameBoard = new Array(9).fill(0);
 
+function inputFlow(player, buttonId) {
+  inputFunction(player, buttonId);
+  const playerInput = findIndexes(player, gameBoard); // Update and check player one's positions
+  if (checkCombination(playerInput)) {
+    console.log(` ${player.name} wins!`);
+  }
+}
 const inputFunction = function (player, location) {
-  // const location = parseInt(
-  //   prompt(`Please enter location for ${player.name}`),
-  //   10,
-  // );
   if (!isNaN(location) && location > 0 && location <= gameBoard.length) {
     gameBoard[location - 1] = player.indicator;
   } else {
@@ -72,18 +75,6 @@ buttons.forEach((button) => {
     const buttonId = event.target.getAttribute('data-id');
     console.log(`Button ${buttonId} pressed`);
     currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
-    if (currentPlayer === playerOne) {
-      inputFunction(playerOne, buttonId);
-      const playerOneInput = findIndexes(playerOne, gameBoard); // Update and check player one's positions
-      if (checkCombination(playerOneInput)) {
-        console.log('Player One wins!');
-      }
-    } else if (currentPlayer === playerTwo) {
-      inputFunction(playerTwo, buttonId);
-      const playerTwoInput = findIndexes(playerTwo, gameBoard); // Update and check player two's positions
-      if (checkCombination(playerTwoInput)) {
-        console.log('Player Two wins!');
-      }
-    }
+    inputFlow(currentPlayer, buttonId);
   });
 });
