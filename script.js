@@ -1,5 +1,23 @@
 const gameBoard = new Array(9).fill(0);
 
+// Function to display the winner message
+function winnerDisplay(player) {
+  // Select the element with the class 'winner-message'
+  const winnerMessageElement = document.getElementById('winner-message');
+
+  // Update the text content to show the winning message
+  winnerMessageElement.textContent = `${player.name} wins!`;
+}
+
+// Function to clear the winner message
+function winnerDisplayClear() {
+  // Select the element with the class 'winner-message'
+  const winnerMessageElement = document.getElementById('winner-message');
+
+  // Clear the text content
+  winnerMessageElement.textContent = '';
+}
+
 // Function to disable all buttons
 function disableAllButtons() {
   buttons.forEach((button) => {
@@ -19,7 +37,7 @@ function inputFlow(player, buttonId) {
   displayIndicator(player, buttonId);
   const playerInput = findIndexes(player, gameBoard); // Update and check player one's positions
   if (checkCombination(playerInput)) {
-    console.log(` ${player.name} wins!`);
+    winnerDisplay(player);
     disableAllButtons();
   }
 }
@@ -85,8 +103,8 @@ const personFactory = function (
   };
 };
 
-const playerOne = personFactory('player1', 1, 'x', []);
-const playerTwo = personFactory('player2', 2, 'o', []);
+const playerOne = personFactory('player 1', 1, 'x', []);
+const playerTwo = personFactory('player 2', 2, 'o', []);
 
 // use buttons for fow control
 const buttons = document.querySelectorAll('.grid-container button');
