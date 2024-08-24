@@ -84,5 +84,6 @@ buttons.forEach((button) => {
     console.log(`Button ${buttonId} pressed`);
     currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
     inputFlow(currentPlayer, buttonId);
+    event.target.disabled = true;
   });
 });
