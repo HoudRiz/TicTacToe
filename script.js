@@ -1,5 +1,23 @@
 const gameBoard = new Array(9).fill(0);
 
+// Function to display the current player's turn message
+function turnDisplay(player) {
+  // Select the element with the id 'turn-message'
+  const turnMessageElement = document.getElementById('turn-message');
+
+  // Update the text content to show whose turn it is
+  turnMessageElement.textContent = `${player.name} turn`;
+}
+
+// Function to clear the turn message
+function turnDisplayClear() {
+  // Select the element with the id 'turn-message'
+  const turnMessageElement = document.getElementById('turn-message');
+
+  // Clear the text content
+  turnMessageElement.textContent = '';
+}
+
 // Function to display the winner message
 function winnerDisplay(player) {
   // Select the element with the class 'winner-message'
@@ -38,6 +56,7 @@ function inputFlow(player, buttonId) {
   const playerInput = findIndexes(player, gameBoard); // Update and check player one's positions
   if (checkCombination(playerInput)) {
     winnerDisplay(player);
+    turnDisplayClear();
     disableAllButtons();
   }
 }
@@ -110,13 +129,15 @@ const playerTwo = personFactory('player 2', 2, 'o', []);
 const buttons = document.querySelectorAll('.grid-container button');
 
 // Add event listener to each button
-let currentPlayer = 'playerOne';
+let currentPlayer = playerOne;
 buttons.forEach((button) => {
   button.addEventListener('click', (event) => {
     const buttonId = event.target.getAttribute('data-id');
     console.log(`Button ${buttonId} pressed`);
-    currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
     inputFlow(currentPlayer, buttonId);
+    currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
+    turnDisplay(currentPlayer);
+    // issue where this display after game ends, this is because this will be triggered after inputFlow
     event.target.disabled = true;
   });
 });
