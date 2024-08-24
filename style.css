@@ -53,3 +53,14 @@ body {
 .grid-container button:nth-child(9) {
     border-left: 2px solid #000;
 }
+
+/* Styling for disabled buttons */
+/* Override default styling for disabled buttons */
+.grid-container button:disabled {
+    cursor: not-allowed;
+    opacity: 1;
+    background-color: inherit;
+    color: inherit;
+    border-color: inherit;
+    box-shadow: inherit;
+}
