@@ -1,11 +1,26 @@
 const gameBoard = new Array(9).fill(0);
 
+// Function to disable all buttons
+function disableAllButtons() {
+  buttons.forEach((button) => {
+    button.disabled = true; // Disable each button
+  });
+}
+
+// Function to enable all buttons (if you want to make them clickable again)
+function enableAllButtons() {
+  buttons.forEach((button) => {
+    button.disabled = false; // Enable each button
+  });
+}
+
 function inputFlow(player, buttonId) {
   inputFunction(player, buttonId);
   displayIndicator(player, buttonId);
   const playerInput = findIndexes(player, gameBoard); // Update and check player one's positions
   if (checkCombination(playerInput)) {
     console.log(` ${player.name} wins!`);
+    disableAllButtons();
   }
 }
 const inputFunction = function (player, location) {
