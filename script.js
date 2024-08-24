@@ -58,7 +58,9 @@ function inputFlow(player, buttonId) {
     winnerDisplay(player);
     turnDisplayClear();
     disableAllButtons();
+    return false;
   }
+  return true;
 }
 const inputFunction = function (player, location) {
   gameBoard[location - 1] = player.indicator;
@@ -134,10 +136,12 @@ buttons.forEach((button) => {
   button.addEventListener('click', (event) => {
     const buttonId = event.target.getAttribute('data-id');
     console.log(`Button ${buttonId} pressed`);
-    inputFlow(currentPlayer, buttonId);
-    currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
-    turnDisplay(currentPlayer);
-    // issue where this display after game ends, this is because this will be triggered after inputFlow
+    const gameContinues = inputFlow(currentPlayer, buttonId);
     event.target.disabled = true;
+    if (gameContinues) {
+      currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
+      turnDisplay(currentPlayer);
+    }
+    // issue where this display after game ends, this is because this will be triggered after inputFlow
   });
 });
