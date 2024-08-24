@@ -2,6 +2,7 @@ const gameBoard = new Array(9).fill(0);
 
 function inputFlow(player, buttonId) {
   inputFunction(player, buttonId);
+  displayIndicator(player, buttonId);
   const playerInput = findIndexes(player, gameBoard); // Update and check player one's positions
   if (checkCombination(playerInput)) {
     console.log(` ${player.name} wins!`);
@@ -12,6 +13,18 @@ const inputFunction = function (player, location) {
   console.log(gameBoard);
   return gameBoard;
 };
+function displayIndicator(player, buttonID) {
+  // Find the button element with the specified buttonID
+  const button = document.querySelector(`button[data-id='${buttonID}']`);
+
+  // Check if the button exists (optional, but good for error handling)
+  if (button) {
+    // Update the button's text content with the player's indicator
+    button.textContent = player.displayVar;
+  } else {
+    console.error(`Button with ID ${buttonID} not found.`);
+  }
+}
 
 function findIndexes(player) {
   player.locationArray = [];
@@ -58,7 +71,7 @@ const personFactory = function (
 };
 
 const playerOne = personFactory('player1', 1, 'x', []);
-const playerTwo = personFactory('player2', 2, 'x', []);
+const playerTwo = personFactory('player2', 2, 'o', []);
 
 // use buttons for fow control
 const buttons = document.querySelectorAll('.grid-container button');
