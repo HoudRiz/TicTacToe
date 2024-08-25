@@ -1,5 +1,23 @@
 const gameBoard = new Array(9).fill(0);
 
+function restartGame() {
+  // Logic to restart the game, e.g., resetting variables, clearing the game board
+  console.log('Game restarted!');
+
+  // Example reset code:
+  // Reset gameBoard
+  gameBoard.fill(0);
+
+  // Clear button texts and re-enable them
+  enableClearButtons();
+  // Reset currentPlayer
+  currentPlayer = playerOne;
+
+  // Update the display to show the current player's turn
+  turnDisplay(currentPlayer);
+  winnerDisplayClear();
+}
+
 // Function to display the current player's turn message
 function turnDisplay(player) {
   // Select the element with the id 'turn-message'
@@ -39,14 +57,16 @@ function winnerDisplayClear() {
 // Function to disable all buttons
 function disableAllButtons() {
   buttons.forEach((button) => {
-    button.disabled = true; // Disable each button
+    button.disabled = true;
+    // Disable each button
   });
 }
 
 // Function to enable all buttons (if you want to make them clickable again)
-function enableAllButtons() {
+function enableClearButtons() {
   buttons.forEach((button) => {
-    button.disabled = false; // Enable each button
+    button.disabled = false;
+    button.textContent = '';
   });
 }
 

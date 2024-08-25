@@ -71,3 +71,10 @@ body {
     border-color: inherit;
     box-shadow: inherit;
 }
+
+#restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
